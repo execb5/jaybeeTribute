@@ -1,10 +1,5 @@
 #include <bool.h>
-
-typedef struct {
-    void* data;
-    Node* leftNode;
-    Node* rightNode;
-} Node;
+#include <Node.h>
 
 typedef struct {
     Node* root;
