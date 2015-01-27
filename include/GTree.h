@@ -1,13 +1,13 @@
-#include <bool.h>
-
-typedef struct {
+typedef struct GTree{
         int level;
         int data;
-        GTree* leftSubTree;
-        GTree* rightSubTree;
+        struct GTree* leftSubTree;
+        struct GTree* rightSubTree;
 } GTree;
 
-GTree* insert(GTree* tree, int data);
-Gtree* contains(GTree* tree, int data);
-Gtree* delete(GTree* tree, int data);
-void print(GTree* tree);
+GTree* insert(GTree* root, int data);
+GTree* contains(GTree* root, int data);
+GTree* delete(GTree* root, int data);
+void print(GTree* root);
+GTree* skew(GTree* root);
+GTree* split(GTree* root);
