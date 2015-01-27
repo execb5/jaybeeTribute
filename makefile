@@ -3,7 +3,7 @@ SDIR = ./src
 ODIR = ./obj
 
 CC = gcc
-CFLAGS = -I$(IDIR)
+CFLAGS = -Wall -I$(IDIR)
 
 _DEPS = GTree.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
