@@ -1,9 +1,10 @@
 #include <bool.h>
 
 typedef struct {
-    void* data;
-    GTree* leftSubTree;
-    GTree* rightSubTree;
+        int level;
+        void* data;
+        GTree* leftSubTree;
+        GTree* rightSubTree;
 } GTree;
 
 void* insert(GTree* tree, void* data);
