@@ -37,3 +37,18 @@ GTree* skew(GTree* root)
         }
         return root;
 }
+
+GTree* split(GTree* root)
+{
+        int lvl = root->level;
+        int gchild = root->rightSubTree->rightSubTree->level;
+        if(lvl != 0 && lvl == gchild)
+        {
+                GTree* aux = root;
+                root = root->rightSubTree;
+                aux->rightSubTree = root->leftSubTree;
+                root->leftSubTree = aux;
+                root->rightSubTree = split(root->rightSubTree);
+        }
+        return root;
+}
