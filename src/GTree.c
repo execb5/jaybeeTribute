@@ -1,4 +1,26 @@
+#include <stdlib.h>
 #include <GTree.h>
+
+unsigned char sentinelNode(void)
+{
+        nil = malloc(sizeof(*nil));
+        if (nil == NULL)
+                return 0;
+        nil->leftSubTree = nil->rightSubTree = nil;
+        nil->level = 0;
+        return 1;
+}
+
+GTree* make_node (int data, int level)
+{
+        GTree* newNode = malloc(sizeof(*newNode));
+        if (newNode == NULL)
+                return NULL;
+        newNode->data = data;
+        newNode->level = level;
+        newNode->leftSubTree = newNode->rightSubTree = nil;
+        return newNode;
+}
 
 GTree* skew(GTree* root)
 {
