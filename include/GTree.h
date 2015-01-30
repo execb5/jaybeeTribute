@@ -10,7 +10,7 @@ typedef struct GTree{
 GTree* nil;
 
 
-unsigned char beginGTree(void);
+GTree* initialize(void);
 GTree* makeNode (int data, int level);
 
 

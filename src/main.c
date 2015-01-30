@@ -3,7 +3,8 @@
 int main(int argc, const char *argv[])
 {
         GTree* g;
-        g = insert(nil, 1);
+        g = initialize();
+        g = insert(g, 1);
         g = insert(g, 5);
         g = insert(g, 3);
         g = insert(g, 9);

@@ -1,14 +1,14 @@
 #include <stdlib.h>
 #include <GTree.h>
 
-unsigned char beginGTree(void)
+GTree* initialize(void)
 {
+        if (nil != NULL)
+                return nil;
         nil = malloc(sizeof(*nil));
-        if (nil == NULL)
-                return 0;
         nil->leftSubTree = nil->rightSubTree = nil;
         nil->level = 0;
-        return 1;
+        return nil;
 }
 
 GTree* makeNode(int data, int level)
@@ -59,12 +59,12 @@ GTree* insert(GTree* root, int data)
                 root = makeNode(data, 1);
         else
         {
-                if (root->data < data)
+                if (data < root->data)
                         root->leftSubTree = insert(root->leftSubTree, data);
                 else
                         root->rightSubTree = insert(root->rightSubTree, data);
-                /*root = skew(root);*/
-                /*root = split(root);*/
+                root = skew(root);
+                root = split(root);
         }
         return root;
 }
