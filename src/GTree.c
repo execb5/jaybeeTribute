@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <GTree.h>
 
-unsigned char sentinelNode(void)
+unsigned char beginGTree(void)
 {
         nil = malloc(sizeof(*nil));
         if (nil == NULL)
@@ -11,7 +11,7 @@ unsigned char sentinelNode(void)
         return 1;
 }
 
-GTree* make_node (int data, int level)
+GTree* makeNode(int data, int level)
 {
         GTree* newNode = malloc(sizeof(*newNode));
         if (newNode == NULL)
@@ -51,4 +51,29 @@ GTree* split(GTree* root)
                 root->rightSubTree = split(root->rightSubTree);
         }
         return root;
+}
+
+GTree* insert(GTree* root, int data)
+{
+        if (root == nil)
+                root = makeNode(data, 1);
+        else
+        {
+                if (root->data < data)
+                        root->leftSubTree = insert(root->leftSubTree, data);
+                else
+                        root->rightSubTree = insert(root->rightSubTree, data);
+                /*root = skew(root);*/
+                /*root = split(root);*/
+        }
+        return root;
+}
+
+void basicPrint(GTree* root)
+{
+        if (root == nil)
+                return;
+        basicPrint(root->leftSubTree);
+        printf("%d\n", root->data);
+        basicPrint(root->rightSubTree);
 }
