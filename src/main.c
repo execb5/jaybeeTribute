@@ -34,6 +34,21 @@ int main(int argc, const char *argv[])
         g = insert(g, 10);
         cutePrint(g, "");
         printf("\n-------------------\n\n");
+        g = insert(g, 11);
+        cutePrint(g, "");
+        printf("\n-------------------\n\n");
+        g = insert(g, 12);
+        cutePrint(g, "");
+        printf("\n-------------------\n\n");
+        g = insert(g, 13);
+        cutePrint(g, "");
+        printf("\n-------------------\n\n");
+        g = insert(g, 14);
+        cutePrint(g, "");
+        printf("\n-------------------\n\n");
+        g = insert(g, 15);
+        cutePrint(g, "");
+        printf("\n-------------------\n\n");
         /*g = remove(g, 10);*/
         /*cutePrint(g, "");*/
         return 0;

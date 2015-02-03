@@ -86,7 +86,7 @@ void cutePrint(GTree* root, char* space)
         strcpy(aux, space);
         strcat(aux, "-+");
         cutePrint(root->leftSubTree, aux);
-        printf("%s%d\n", space, root->data);
+        printf("%s%d,%d\n", space, root->data, root->level);
         cutePrint(root->rightSubTree, aux);
 }
 GTree* find(GTree* root, int data)
