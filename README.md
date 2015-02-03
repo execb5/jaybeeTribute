@@ -6,5 +6,5 @@ Tree.
 
 Made by:
 
-- [Diego jornada](http://gihub.com/djornada)
-- [Matthias Nunes](http://gihub.com/execb5)
+- [Diego jornada](http://github.com/djornada)
+- [Matthias Nunes](http://github.com/execb5)
