@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <GTree.h>
 
 GTree* initialize(void)
@@ -69,6 +68,7 @@ GTree* insert(GTree* root, int data)
         return root;
 }
 
+
 void basicPrint(GTree* root)
 {
         if (root == nil)
@@ -76,4 +76,23 @@ void basicPrint(GTree* root)
         basicPrint(root->leftSubTree);
         printf("%d\n", root->data);
         basicPrint(root->rightSubTree);
+}
+void cutePrint(GTree* root, char* space)
+{
+        if (root == nil)
+                return;
+        char aux[256]="";
+        strcpy(aux, space);
+        strcat(aux, "-+");
+        cutePrint(root->leftSubTree, aux);
+        printf("%s%d\n", space, root->data);
+        cutePrint(root->rightSubTree, aux);
+}
+GTree* find(GTree* root, int data)
+{
+        if (root == nil || data == root->data)
+                return root;
+        if (data < root->data)
+                return find(root->leftSubTree, data);
+        return find(root->rightSubTree, data);
 }
