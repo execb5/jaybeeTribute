@@ -47,6 +47,7 @@ GTree* split(GTree* root)
                 root = root->rightSubTree;
                 aux->rightSubTree = root->leftSubTree;
                 root->leftSubTree = aux;
+                ++root->level;
                 root->rightSubTree = split(root->rightSubTree);
         }
         return root;
