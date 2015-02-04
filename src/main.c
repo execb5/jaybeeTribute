@@ -49,7 +49,14 @@ int main(int argc, const char *argv[])
         g = insert(g, 15);
         cutePrint(g, "");
         printf("\n-------------------\n\n");
-        /*g = remove(g, 10);*/
-        /*cutePrint(g, "");*/
+        g = remove(g, 15);
+        cutePrint(g, "");
+        printf("\n-------------------\n\n");
+        g = remove(g, 13);
+        cutePrint(g, "");
+        printf("\n-------------------\n\n");
+        g = remove(g, 4);
+        cutePrint(g, "");
+        printf("\n-------------------\n\n");
         return 0;
 }

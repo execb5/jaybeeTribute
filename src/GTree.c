@@ -97,3 +97,41 @@ GTree* find(GTree* root, int data)
                 return find(root->leftSubTree, data);
         return find(root->rightSubTree, data);
 }
+
+GTree* remove(GTree* root, int data)
+{
+        if (root != nil)
+        {
+                if (data == root->data)
+                {
+                        if (root->leftSubTree != nil && root->rightSubTree != nil)
+                        {
+                                GTree *successor = root->leftSubTree;
+                                while (successor->rightSubTree != nil)
+                                        successor = successor->rightSubTree;
+                                root->data = successor->data;
+                                root->leftSubTree = remove(root->leftSubTree, root->data);
+                        }
+                        else
+                                if (root->leftSubTree == nil)
+                                        root = root->rightSubTree;
+                                else
+                                        root = root->leftSubTree;
+                }
+                else
+                {
+                        if (data > root->data)
+                                root->rightSubTree = remove(root->rightSubTree, data);
+                        else
+                                root->leftSubTree = remove(root->leftSubTree, data);
+                }
+        }
+        if (root->leftSubTree->level < root->level - 1 || root->rightSubTree->level < root->level - 1)
+        {
+                if (root->rightSubTree->level > --root->level)
+                        root->rightSubTree->level = root->level;
+                root = skew(root);
+                root = split(root);
+        }
+        return root; 
+}
