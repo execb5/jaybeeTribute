@@ -113,10 +113,14 @@ GTree* remove(GTree* root, int data)
                                 root->leftSubTree = remove(root->leftSubTree, root->data);
                         }
                         else
+                        {
+                                GTree* aux = root;
                                 if (root->leftSubTree == nil)
                                         root = root->rightSubTree;
                                 else
                                         root = root->leftSubTree;
+                                free(aux);
+                        }
                 }
                 else
                 {
