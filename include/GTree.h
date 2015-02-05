@@ -23,3 +23,5 @@ GTree* skew(GTree* root);
 GTree* split(GTree* root);
 GTree* find(GTree* root, int data);
 void cutePrint(GTree* root, char* space);
+void destroy(GTree* root);
+void destroySentinel(void);

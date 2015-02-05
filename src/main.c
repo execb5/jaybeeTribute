@@ -21,5 +21,7 @@ int main(int argc, const char *argv[])
         g = remove(g, 4);
         cutePrint(g, "");
         printf("\n-------------------\n\n");
+        destroy(g);
+        destroySentinel();
         return 0;
 }

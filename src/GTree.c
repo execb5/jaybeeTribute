@@ -1,6 +1,7 @@
 #include <GTree.h>
 
-GTree* initialize(void)
+GTree*
+initialize(void)
 {
         if (nil != NULL)
                 return nil;
@@ -10,7 +11,8 @@ GTree* initialize(void)
         return nil;
 }
 
-GTree* makeNode(int data, int level)
+GTree*
+makeNode(int data, int level)
 {
         GTree* newNode = malloc(sizeof(*newNode));
         if (newNode == NULL)
@@ -21,7 +23,8 @@ GTree* makeNode(int data, int level)
         return newNode;
 }
 
-GTree* skew(GTree* root)
+GTree*
+skew(GTree* root)
 {
         if (root->level != 0)
         {
@@ -37,7 +40,8 @@ GTree* skew(GTree* root)
         return root;
 }
 
-GTree* split(GTree* root)
+GTree*
+split(GTree* root)
 {
         int lvl = root->level;
         int gchild = root->rightSubTree->rightSubTree->level;
@@ -53,7 +57,8 @@ GTree* split(GTree* root)
         return root;
 }
 
-GTree* insert(GTree* root, int data)
+GTree*
+insert(GTree* root, int data)
 {
         if (root == nil)
                 root = makeNode(data, 1);
@@ -70,7 +75,8 @@ GTree* insert(GTree* root, int data)
 }
 
 
-void basicPrint(GTree* root)
+void
+basicPrint(GTree* root)
 {
         if (root == nil)
                 return;
@@ -78,7 +84,8 @@ void basicPrint(GTree* root)
         printf("%d\n", root->data);
         basicPrint(root->rightSubTree);
 }
-void cutePrint(GTree* root, char* space)
+void
+cutePrint(GTree* root, char* space)
 {
         if (root == nil)
                 return;
@@ -89,7 +96,8 @@ void cutePrint(GTree* root, char* space)
         printf("%s%d,%d\n", space, root->data, root->level);
         cutePrint(root->rightSubTree, aux);
 }
-GTree* find(GTree* root, int data)
+GTree*
+find(GTree* root, int data)
 {
         if (root == nil || data == root->data)
                 return root;
@@ -98,7 +106,8 @@ GTree* find(GTree* root, int data)
         return find(root->rightSubTree, data);
 }
 
-GTree* remove(GTree* root, int data)
+GTree*
+remove(GTree* root, int data)
 {
         if (root != nil)
         {
@@ -138,4 +147,20 @@ GTree* remove(GTree* root, int data)
                 root = split(root);
         }
         return root; 
+}
+
+void
+destroy(GTree* root)
+{
+        if (root == nil)
+                return;
+        destroy(root->rightSubTree);
+        destroy(root->leftSubTree);
+        free(root);
+}
+
+void
+destroySentinel(void)
+{
+        free(nil);
 }
