@@ -84,6 +84,7 @@ basicPrint(GTree* root)
         printf("%d\n", root->data);
         basicPrint(root->rightSubTree);
 }
+
 void
 cutePrint(GTree* root, char* space)
 {
@@ -96,6 +97,7 @@ cutePrint(GTree* root, char* space)
         printf("%s%d,%d\n", space, root->data, root->level);
         cutePrint(root->rightSubTree, aux);
 }
+
 GTree*
 find(GTree* root, int data)
 {
