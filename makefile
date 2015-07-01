@@ -17,6 +17,9 @@ $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 main: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
+testLeak: main
+	valgrind --leak-check=full -v ./main
+
 .PHONY: clean
 
 clean:
