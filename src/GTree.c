@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <GTree.h>
 
 GTree*
@@ -58,16 +59,16 @@ split(GTree* root)
 }
 
 GTree*
-insert(GTree* root, int data)
+insertNode(GTree* root, int data)
 {
         if (root == nil)
                 root = makeNode(data, 1);
         else
         {
                 if (data < root->data)
-                        root->leftSubTree = insert(root->leftSubTree, data);
+                        root->leftSubTree = insertNode(root->leftSubTree, data);
                 else
-                        root->rightSubTree = insert(root->rightSubTree, data);
+                        root->rightSubTree = insertNode(root->rightSubTree, data);
                 root = skew(root);
                 root = split(root);
         }
@@ -97,19 +98,24 @@ cutePrint(GTree* root, char* space)
         printf("%s%d,%d\n", space, root->data, root->level);
         cutePrint(root->rightSubTree, aux);
 }
+void 
+awesomePrint(GTree* root)
+{
+        printf("%d\n", root->data);        
+}
 
 GTree*
-find(GTree* root, int data)
+findNode(GTree* root, int data)
 {
         if (root == nil || data == root->data)
                 return root;
         if (data < root->data)
-                return find(root->leftSubTree, data);
-        return find(root->rightSubTree, data);
+                return findNode(root->leftSubTree, data);
+        return findNode(root->rightSubTree, data);
 }
 
 GTree*
-remove(GTree* root, int data)
+removeNode(GTree* root, int data)
 {
         if (root != nil)
         {
@@ -121,7 +127,7 @@ remove(GTree* root, int data)
                                 while (successor->rightSubTree != nil)
                                         successor = successor->rightSubTree;
                                 root->data = successor->data;
-                                root->leftSubTree = remove(root->leftSubTree, root->data);
+                                root->leftSubTree = removeNode(root->leftSubTree, root->data);
                         }
                         else
                         {
@@ -136,9 +142,9 @@ remove(GTree* root, int data)
                 else
                 {
                         if (data > root->data)
-                                root->rightSubTree = remove(root->rightSubTree, data);
+                                root->rightSubTree = removeNode(root->rightSubTree, data);
                         else
-                                root->leftSubTree = remove(root->leftSubTree, data);
+                                root->leftSubTree = removeNode(root->leftSubTree, data);
                 }
         }
         if (root->leftSubTree->level < root->level - 1 || root->rightSubTree->level < root->level - 1)
