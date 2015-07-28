@@ -14,14 +14,14 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-main: $(OBJ)
+GTree: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 testLeak: main
-	valgrind --leak-check=full -v ./main
+	valgrind --leak-check=full -v ./GTree
 
 .PHONY: clean
 
 clean:
 	rm -f $(ODIR)/*.o
-	rm -f main
+	rm -f GTree
