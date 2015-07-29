@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <string.h>
 
 typedef struct GTree{
         int level;
@@ -15,6 +13,7 @@ GTree* initialize(void);
 GTree* makeNode (int data, int level);
 
 
+void awesomePrint(GTree* root);
 GTree* insertNode(GTree* root, int data);
 GTree* contains(GTree* root, int data);
 GTree* removeNode(GTree* root, int data);

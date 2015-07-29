@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <GTree.h>
 
 GTree*
@@ -98,10 +100,10 @@ cutePrint(GTree* root, char* space)
         printf("%s%d,%d\n", space, root->data, root->level);
         cutePrint(root->rightSubTree, aux);
 }
-void 
+void
 awesomePrint(GTree* root)
 {
-        printf("%d\n", root->data);        
+        printf("%d\n", root->data);
 }
 
 GTree*
@@ -154,7 +156,7 @@ removeNode(GTree* root, int data)
                 root = skew(root);
                 root = split(root);
         }
-        return root; 
+        return root;
 }
 
 void
