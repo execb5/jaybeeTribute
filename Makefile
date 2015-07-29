@@ -17,10 +17,11 @@ $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 GTree: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
-testLeak: GTree
-	valgrind --leak-check=full -v ./GTree
+.PHONY: clean testLeak
 
-.PHONY: clean
+testLeak: GTree
+	valgrind --leak-check=full --show-leak-kinds=all -v ./$^
+
 
 clean:
 	rm -f $(ODIR)/*.o
