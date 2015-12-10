@@ -1,10 +1,5 @@
 # Jaybee Tribute
 
-A simple hash table structure that uses our GTree, which is simply an Andersson
+A simple hash Anderson Tree that we called GTree.
 Tree.
 
-
-Made by:
-
-- [Diego jornada](http://github.com/djornada)
-- [Matthias Nunes](http://github.com/execb5)
