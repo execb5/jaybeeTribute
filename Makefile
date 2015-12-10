@@ -5,10 +5,10 @@ ODIR = ./obj
 CC = gcc
 CFLAGS = -Wall -g -I$(IDIR)
 
-_DEPS = GTree.h H45h.h LinkedList.h
+_DEPS = GTree.h LinkedList.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = GTree.o main.o H45h.o LinkedList.o
+_OBJ = GTree.o main.o LinkedList.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
